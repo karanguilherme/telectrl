@@ -22,9 +22,9 @@
             <div class="col-12 col-md-6 col-sm-12 text-right">
                 <nav>
                     <ul class="flex end">
-                        <li><a href="clientes.html">Clientes</a></li>
-                        <li><a href="produtos.html">Produtos</a></li>
-                        <li><a href="ordem-servico.html">Ordem de Serviços</a></li>
+                        <li><a href="clientes.php">Clientes</a></li>
+                        <li><a href="produtos.php">Produtos</a></li>
+                        <li><a href="ordem-servico.php">Ordem de Serviços</a></li>
                     </ul>
                 </nav>
             </div>

@@ -14,18 +14,25 @@
 </head>
 <body>
 <header>
+
   <div class="container">
     <div class="row">
       <div class="col-12 col-md-6 col-sm-12">
         <h2 class="navbar-brand">Sistema de Ordem de serviços</h2>
       </div>
       <div class="col-12 col-md-6 col-sm-12 text-right">
-        <nav>
-          <ul class="flex end">
-            <li><a href="clientes.html">Clientes</a></li>
-            <li><a href="produtos.html">Produtos</a></li>
-            <li><a href="ordem-servico.html">Ordem de Serviços</a></li>
+        <nav class="navbar navbar-expand-lg">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="menu">
+          <ul class="flex end navbar-nav me-auto mb-2 mb-lg-0">
+            <li><a href="clientes.php">Clientes</a></li>
+            <li><a href="produtos.php">Produtos</a></li>
+            <li><a href="ordem-servico.php">Ordem de Serviços</a></li>
           </ul>
+          </div>
         </nav>
       </div>
     </div>
