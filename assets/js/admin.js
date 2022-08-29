@@ -1,5 +1,6 @@
 admin = {
-    
+
+    //Faz a consulta do CEP digitado, preenchendo os campos indicados.
     buscaCep: function()
     {
         $(document).ready(function() {
@@ -60,41 +61,81 @@ admin = {
 
     },
 
+    //Função onde poderiamos criar as mascaras de inputs.
     mascaras: function()
     {
-
             $('#cpf').mask('000.000.000-00')
+    },
 
+
+    //Clientes
+    novoCliente:function ()
+    {
 
     },
 
-    deletarCliente: function ()
+    editarCliente: function ()
     {
-        $('#deletarCliente').click(function(){
-            Swal.fire({
-                title: 'Deseja realmente deletar ?',
-                text: "Esta ação não poderá ser revertida!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Sim quero deletar!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire(
-                        'Deletado!',
-                        'Os dados foram deletados com sucesso.',
-                        'success'
-                    )
-                }
-            })
-        })
+
+    },
+
+    excluirCliente: function ()
+    {
+
+    },
+
+    pesquisarCliente: function ()
+    {
+
+    },
+
+
+    //Produtos
+    novoProduto:function ()
+    {
+
+    },
+
+    editarProduto: function ()
+    {
+
+    },
+
+    excluirProduto: function ()
+    {
+
+    },
+
+    pesquisarProduto: function ()
+    {
+
+    },
+
+
+    //Ordens de serviço
+    novaOrdem:function ()
+    {
+
+    },
+
+    editarOrdem: function ()
+    {
+
+    },
+
+    excluirOrdem: function ()
+    {
+
+    },
+
+    pesquisarOrdem: function ()
+    {
+
     }
-    
+
 }
 
 $(function(){
     admin.buscaCep();
     admin.mascaras();
-    admin.deletarCliente();
 });

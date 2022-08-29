@@ -4,6 +4,12 @@ a{
     text-decoration: none;
 }
 
+a:current{
+
+    font-weight: 600;
+    color: #0d6efd;
+
+}
 a:hover{
     color: #0c4128;
 }
@@ -96,3 +102,4 @@ nav li {
 nav ul {
     list-style: none;
 }
+
