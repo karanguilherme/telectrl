@@ -13,3 +13,11 @@ Olá, este é apenas um sistema simples para fins de testes e avaliação, neste
 * Altere os dados de conexão com banco de dados no arquivo conexao que se encontra dentro da pasta Model.
 
 
+## Tecnologias utilizadas?  
+* Jquery
+* PHP 8.1
+* HTML 5
+* JAVASCRIPT
+* CSS
+* BOOTSTRAP 5
+* POSTGRES
