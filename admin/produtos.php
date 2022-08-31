@@ -1,3 +1,13 @@
+<?php
+
+require_once 'model/produtosModel.php';
+
+function listarProdutos(){
+    $produto = new produtosModel();
+    $produtos = $produto->list();
+    return $produtos;
+}
+?>
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -8,9 +18,9 @@
   <title>Produtos - Àrea Administrativa de Ordem de serviços</title>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="../assets/css/bootstrap-reboot.min.css">
-  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../assets/css/admin.css">
+  <link rel="stylesheet" href="assets/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/admin.css">
 </head>
 <body>
 <header>
@@ -20,10 +30,10 @@
       <div class="col-12 col-md-6 col-sm-12">
         <h2 class="navbar-brand">Sistema de Ordem de serviços</h2>
       </div>
-      <div class="col-12 col-md-6 col-sm-12 text-right">
+      <div class="col-12 col-md-6 col-sm-12">
         <nav class="navbar navbar-expand-lg">
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false">
-            <span class="navbar-toggler-icon"></span>
+              <i class="bi bi-list"></i>
           </button>
 
           <div class="collapse navbar-collapse" id="menu">
@@ -44,11 +54,11 @@
 
     <!--      Bloco Cabeçalho -->
     <div class="row">
-      <div class="col-12 col-md-6 col-sm-12">
+      <div class="col-6 col-md-6 col-sm-6">
         <h2 class="title-head">Produtos</h2>
       </div>
-      <div class="col-12 col-md-6 col-sm-12 text-right">
-        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#novoProduto">Novo Produto</button>
+      <div class="col-6 col-md-6 col-sm-6 text-right">
+        <a class="btn btn-primary" href="formularioCadProduto.php"> Novo Produto</a>
       </div>
     </div>
 
@@ -62,84 +72,77 @@
 
     <!--      Bloco Cabeçalho da tabela-->
     <div class="row">
-      <div class="col-12 col-md-2 col-sm-12 fw-bold">
+      <div class="col-12 col-md-2 col-sm-12 fw-bold d-sm-none d-md-block d-none d-sm-block">
         Código
       </div>
-      <div class="col-12 col-md-5 col-sm-12 fw-bold">
+      <div class="col-6 col-md-5 col-sm-6 fw-bold ">
         Descrição
       </div>
-      <div class="col-12 col-md-3 col-sm-12 fw-bold">
+      <div class="col-12 col-md-3 col-sm-12 fw-bold d-sm-none d-md-block d-none d-sm-block" >
         Situação
       </div>
-      <div class="col-12 col-md-2 col-sm-12 fw-bold">
+      <div class="col-6 col-md-2 col-sm-6 fw-bold">
         Ações
       </div>
     </div>
-    <!--      Bloco Listagem de dados dos clientes-->
-      <div class="list row">
-        <div class="col-12 col-md-2 col-sm-12 fw-bold">
-          Código
-        </div>
-      <div class="col-12 col-md-5 col-sm-12 fw-bold">
-        Descrição
-      </div>
-      <div class="col-12 col-md-3 col-sm-12 fw-bold">
-        Situação
-      </div>
-      <div class="col-12 col-md-1 col-sm-12">
-        <button id="deletarProduto" data-id="" data-bs-toggle="modal" data-bs-target="#excluirProduto">
-          <i class="bi bi-trash-fill"></i>
-        </button>
-      </div>
-      <div class="col-12 col-md-1 col-sm-12">
-        <button id="editaProduto" data-id="" data-bs-toggle="modal" data-bs-target="#editarProduto">
-          <i class="bi bi-pencil-square"></i>
-        </button>
-      </div>
-    </div>
 
+      <!--      Bloco Listagem de dados dos clientes-->
+      <?php
+      $produtos = listarProdutos();
+      ?>
+      <?php if( !empty($produtos) ){?>
+
+      <?php foreach ($produtos as $p){?>
+        <!--      Bloco Listagem de dados dos clientes-->
+          <div class="list row">
+
+            <div class="col-12 col-md-2 col-sm-12 fw-bold d-sm-none d-md-block d-none d-sm-block">
+              <?php echo $p['idproduto']?>
+            </div>
+
+            <div class="col-6 col-md-5 col-sm-6 fw-bold">
+            <?php echo $p['descricao']?>
+            </div>
+
+            <div class="col-12 col-md-3 col-sm-12 fw-bold d-sm-none d-md-block d-none d-sm-block">
+            <?php echo $p['situacao']?>
+            </div>
+
+            <div class="col-6 col-md-1 col-sm-6 flex">
+              <form method="post" id="excluir-cliente" action="controllers/produtosController.php">
+                  <input type="hidden" name="idproduto" value="<?php echo $p['idproduto']?>">
+                  <button id="deletarCliente"  name="excluir">
+                      <i class="bi bi-trash-fill"></i>
+                  </button>
+              </form>
+
+              <form action="formularioEdtProduto.php" method="post">
+                  <input type="hidden" name="idproduto" value="<?php echo $p['idproduto']?>">
+                  <button id="editaCliente" class="editar-model" name="selecionar">
+                      <i class="bi bi-pencil-square"></i>
+                  </button>
+              </form>
+
+            </div>
+        </div>
+      <?php } ?>
+
+      <?php }else{ ?>
+
+      <div class="row">
+          <div class="col-12 col-md-12 col-sm-12 text-center">
+              Nenhum registro encontrado até o momento.
+          </div>
+      </div>
+
+      <?php } ?>
 
 
   </div>
 
 </main>
 
-<div class="modal fade" id="novoProduto" tabindex="-1" aria-labelledby="excluirProdutoLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
 
-      <div class="modal-header">
-        <h5 class="modal-title" id="novoClienteLabel">Novo Produto</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-
-      <form method="post" id="novo-produto">
-        <div class="modal-body">
-
-          <div>
-            <label for="codigo">Codigo</label>
-            <input type="text" name="codigo" id="codigo" placeholder="Ex: 0001" required class="form-control">
-          </div>
-
-          <div>
-            <label for="descricao">Descrição</label>
-            <input type="text" name="descricao" id="descricao" placeholder="CPF" required class="form-control">
-          </div>
-
-          <div>
-            <label for="situacao">Situação</label>
-            <input type="checkbox" id="situacao" name="situacao" checked>
-          </div>
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
-          <button type="button" class="btn btn-success">Salvar</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
 <div class="modal fade" id="excluirProduto" tabindex="-1" aria-labelledby="excluirProdutoLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -154,7 +157,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-danger">Excluir</button>
+          <button type="submit" class="btn btn-danger" name="excluir">Excluir</button>
         </div>
       </form>
     </div>
@@ -162,9 +165,9 @@
 </div>
 
 
-<script src="../assets/js/jquery-3.6.1.min.js"></script>
-<script src="../assets/js/bootstrap.min.js"></script>
-<script src="../assets/js/jquery.mask.min.js"></script>
-<script src="../assets/js/admin.js"></script>
+<script src="assets/js/jquery-3.6.1.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/jquery.mask.min.js"></script>
+<script src="assets/js/admin.js"></script>
 </body>
 </html>

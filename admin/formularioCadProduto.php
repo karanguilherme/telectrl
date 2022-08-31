@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Àrea Administrativa de Ordem de serviços</title>
+    <title>Produtos - Àrea Administrativa de Ordem de serviços</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="assets/css/bootstrap-reboot.min.css">
@@ -39,9 +39,46 @@
     </div>
 </header>
 
+
 <main>
     <div class="container">
 
+        <!--      Bloco Cabeçalho -->
+        <div class="row">
+            <div class="col-12 col-md-6 col-sm-12">
+                <h2 class="modal-title" >Novo Produto</h2>
+            </div>
+            <div class="col-12 col-md-6 col-sm-12 text-right">
+                <a href="clientes.php" >Voltar</a>
+            </div>
+        </div>
+
+        <div id="novoProduto">
+            <form method="post" id="novo-produto" action="controllers/produtosController.php">
+                <div class="modal-body">
+
+                    <div>
+                        <label for="codigo">Codigo</label>
+                        <input type="text" name="codigo" id="codigo" placeholder="Ex: 0001" required class="form-control">
+                    </div>
+
+                    <div>
+                        <label for="descricao">Descrição</label>
+                        <input type="text" name="descricao" id="descricao" placeholder="Impressora Elgin" required class="form-control">
+                    </div>
+
+                    <div>
+                        <label for="situacao">Situação</label>
+                        <input type="checkbox" id="situacao" name="situacao" checked>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <a href="produtos.php" class="btn btn-danger" >Fechar</a>
+                    <button type="submit" class="btn btn-success" name="cadastrar">Salvar</button>
+                </div>
+            </form>
+        </div>
 
     </div>
 

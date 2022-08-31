@@ -67,75 +67,16 @@ admin = {
             $('#cpf').mask('000.000.000-00')
     },
 
-
-    //Clientes
-    novoCliente:function ()
+    //Função que ativa busca dentro do select option
+    ativaBuscaInput: function()
     {
-
+        $('.buscaSelect').select2();
     },
-
-    editarCliente: function ()
-    {
-
-    },
-
-    excluirCliente: function ()
-    {
-
-    },
-
-    pesquisarCliente: function ()
-    {
-
-    },
-
-
-    //Produtos
-    novoProduto:function ()
-    {
-
-    },
-
-    editarProduto: function ()
-    {
-
-    },
-
-    excluirProduto: function ()
-    {
-
-    },
-
-    pesquisarProduto: function ()
-    {
-
-    },
-
-
-    //Ordens de serviço
-    novaOrdem:function ()
-    {
-
-    },
-
-    editarOrdem: function ()
-    {
-
-    },
-
-    excluirOrdem: function ()
-    {
-
-    },
-
-    pesquisarOrdem: function ()
-    {
-
-    }
 
 }
 
 $(function(){
     admin.buscaCep();
     admin.mascaras();
+    admin.ativaBuscaInput();
 });
